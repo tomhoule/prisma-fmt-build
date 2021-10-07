@@ -21,18 +21,24 @@
         defaultPackage = buildRustPackage {
           buildPhase =
             "echo 'wasm build...'; RUSTC=${rust}/bin/rustc ${rust}/bin/cargo build --release --target=wasm32-unknown-unknown";
-          checkPhase = "echo 'checkPhase: echo yolo'";
+          checkPhase = "echo 'checkPhase: do nothing'";
           name = "prisma-fmt-wasm";
           src = ./.;
           cargoSha256 = "sha256-T9zov9UUsKt4sKZ6AvjWJILHQlNWv83jvTGMedWDlWA=";
           installPhase = ''
             echo 'ls`ing target';
             ls -a target/**/*;
-            mkdir $out;
 
+            echo 'creating out dir...'
+            mkdir -p $out/src;
+
+            echo 'copying package.json...'
+            cp ${./package.json} $out/package.json;
+
+            echo 'generating node module...'
             RUST_BACKTRACE=1 ${wasm-bindgen-cli}/bin/wasm-bindgen \
               --target nodejs \
-              --out-dir $out \
+              --out-dir $out/src \
               target/wasm32-unknown-unknown/release/prisma_fmt_build.wasm;
           '';
         };
