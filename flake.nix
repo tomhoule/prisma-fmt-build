@@ -24,7 +24,7 @@
           checkPhase = "echo 'checkPhase: do nothing'";
           name = "prisma-fmt-wasm";
           src = ./.;
-          cargoSha256 = "sha256-T9zov9UUsKt4sKZ6AvjWJILHQlNWv83jvTGMedWDlWA=";
+          cargoSha256 = "sha256-FTsX/v8nJEPCydnfvTK06ocmqwIOrLVeYPIX1r6OrDU=";
           installPhase = ''
             echo 'ls`ing target';
             ls -a target/**/*;

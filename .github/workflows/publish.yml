@@ -4,6 +4,7 @@ on: workflow_dispatch # triggered manually for now
 
 jobs:
   build:
+    name: Build and publish
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
