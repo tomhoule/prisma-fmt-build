@@ -24,6 +24,9 @@ jobs:
     # Sets up .npmrc for next step
     # https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
     - uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: 'https://registry.npmjs.org'
 
     - run: npm publish result
       env:
