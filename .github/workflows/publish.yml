@@ -28,6 +28,6 @@ jobs:
         node-version: '14.x'
         registry-url: 'https://registry.npmjs.org'
 
-    - run: npm publish result
+    - run: npm publish result --tag=dev
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
